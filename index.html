@@ -6,6 +6,14 @@
 <title>Farm &amp; Veterinary Supplies Ireland | Feirm Supplies</title>
 <meta name="description" content="Shop farm supplies online from Feirm Supplies. Dairy hygiene, animal health, grassland, fencing, nutrition and farm essentials delivered across Ireland.">
 <meta name="theme-color" content="#1D1519">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Feirm Supplies">
+<meta property="og:title" content="Farm &amp; Veterinary Supplies Ireland | Feirm Supplies">
+<meta property="og:description" content="Farm and veterinary supplies delivered across Ireland, from the farmer-owned Feirm Co-op. Prescription help, advisors and member credit.">
+<meta property="og:image" content="https://fls-a22453d3-0aae-4af4-bc68-844e4af3f6ff.laravel.cloud/page-blocks/01M0ZBZ9ZKN2TNQ66FGEW0T1YG.webp">
+<meta property="og:image:alt" content="Two people kneeling in a green field, checking a newly reseeded sward">
+<meta property="og:url" content="https://feirmsupplies.com/">
+<meta name="twitter:card" content="summary_large_image">
 <!--
   FEIRM SUPPLIES · STORE PROTOTYPE
   Single-page app with hash routing: every route mirrors the live Laravel URL
@@ -1374,6 +1382,110 @@ p.alert { display: grid; grid-template-columns: 24px 1fr; gap: 14px; }
 .nf code { font-family: inherit; color: var(--barley); }
 
 .deep-link main[data-prerendered] { visibility: hidden; }
+
+/* ================= Feirm update: services, WhatsApp, reviews, calculator ================= */
+.header-guest { display: none; }
+.header-help, .header-buyagain { display: none; }
+@media (min-width: 1280px) { .header-help { display: inline-flex; } }
+.header-buyagain:not([hidden]) { display: none; }
+@media (min-width: 1024px) { .header-buyagain:not([hidden]) { display: inline-flex; } }
+@media (max-width: 1023px) {
+  .header-actions { position: relative; }
+  .header-guest { display: block; position: absolute; right: 0; top: calc(100% - 6px); white-space: nowrap; font-size: .6875rem; line-height: 1; color: var(--mist); pointer-events: none; }
+}
+.nav-link { display: inline-flex; align-items: center; min-height: var(--tap); padding: 0 14px; border-radius: var(--r-control); color: inherit; text-decoration: none; font-weight: 500; }
+.nav-link:hover, .nav-link[aria-current="page"] { background: rgb(245 245 242 / .1); }
+.wa-fab { position: fixed; right: 16px; bottom: 16px; z-index: 48; display: inline-flex; align-items: center; gap: 8px; min-height: 56px; min-width: 56px; justify-content: center; padding: 0 16px; background: #1f7a4d; color: #fff; border-radius: 999px; box-shadow: 0 8px 24px rgb(29 21 25 / .3); text-decoration: none; font-weight: 600; transition: opacity var(--t1), transform var(--t1); }
+.wa-fab .icon { width: 28px; height: 28px; }
+.wa-fab:hover { background: #17633e; }
+.wa-fab:focus-visible { outline: 3px solid var(--barley); outline-offset: 3px; }
+.wa-fab__text { display: none; }
+@media (min-width: 1024px) { .wa-fab { right: 24px; bottom: 24px; } .wa-fab__text { display: inline; } }
+body.is-locked .wa-fab, body.search-open .wa-fab { opacity: 0; pointer-events: none; visibility: hidden; }
+body[data-route="product"] .wa-fab { bottom: 92px; }
+@media (min-width: 1024px) { body[data-route="product"] .wa-fab { bottom: 24px; } }
+@media (max-width: 639px) { body:has(.cookie:not([hidden])) .wa-fab { bottom: 190px; } }
+.svc-strip { padding: 48px 0; }
+.svc-strip__grid { display: grid; gap: 12px; margin-top: 24px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .svc-strip__grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .svc-strip__grid { grid-template-columns: repeat(4, 1fr); } }
+.svc-strip__grid a { display: grid; gap: 8px; align-content: start; height: 100%; padding: 24px; background: var(--peat); color: var(--lime); text-decoration: none; }
+.svc-strip__grid strong { font-family: var(--serif); font-weight: 400; font-size: 1.375rem; }
+.svc-strip__grid span { color: var(--mist); font-size: var(--fs-small); }
+.svc-strip__grid em { font-style: normal; font-weight: 600; text-decoration: underline; text-underline-offset: .25em; }
+.svc-strip__grid a:hover { background: var(--aubergine); }
+.quotes { padding: 48px 0; }
+.quotes__grid { display: grid; gap: 16px; margin-top: 24px; }
+@media (min-width: 900px) { .quotes__grid { grid-template-columns: repeat(3, 1fr); } }
+.quotes__grid li { padding: 24px; background: var(--lime); display: grid; gap: 14px; align-content: space-between; }
+.quotes__grid blockquote { font-family: var(--serif); font-size: 1.25rem; line-height: 1.3; }
+.quotes__who strong { display: block; }
+.quotes__who { font-size: var(--fs-small); color: var(--ink-muted); }
+.quotes__note { margin-top: 16px; font-size: var(--fs-caption); color: var(--ink-muted); }
+.post__by { font-size: var(--fs-small); color: var(--ink-muted); margin-top: 6px; }
+.stars { display: inline-flex; align-items: center; gap: 2px; color: #b4741a; font-size: var(--fs-small); }
+.stars .icon { width: 16px; height: 16px; }
+.stars .icon.is-off { color: var(--control-light, #c9c4bc); }
+.stars__count { margin-left: 6px; color: var(--ink-muted); }
+.pcard__meta2 { display: grid; gap: 2px; margin-top: 4px; }
+.pcard__member { font-size: var(--fs-caption); color: var(--ink-muted); }
+.pcard__member strong { color: var(--ink); }
+.buy__member { font-size: var(--fs-small); color: var(--ink-muted); margin-top: 2px; }
+.buy__member strong { color: var(--ink); }
+.rx-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.rx-actions .btn { min-height: 44px; }
+.rx-note { margin-top: 8px; font-size: var(--fs-caption); color: var(--mist); }
+.rx-banner { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 20px; padding: 16px 20px; background: var(--info-bg); color: var(--ink); border-left: 3px solid var(--info); }
+.rx-banner a { font-weight: 600; }
+.ship-note { margin-top: 8px; font-size: var(--fs-small); font-weight: 600; color: var(--warning); }
+.reviews { display: grid; gap: 16px; }
+.review { padding: 18px 20px; background: var(--limestone); display: grid; gap: 6px; }
+.review h3 { font-size: 1rem; }
+.review small { color: var(--ink-muted); }
+.svc-page { padding: 56px 0; }
+.svc-list { display: grid; gap: 16px; margin-top: 32px; }
+.svc-card { display: grid; gap: 12px; padding: 28px; background: var(--lime); border: 1px solid var(--rule-light, #d7d2c8); scroll-margin-top: 96px; }
+.svc-card h2 { font-family: var(--serif); font-weight: 400; }
+.svc-card__tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.svc-tag { display: inline-flex; padding: 3px 10px; border-radius: 999px; background: var(--limestone); font-size: var(--fs-caption); font-weight: 600; }
+.svc-tag--members { background: var(--peat); color: var(--lime); }
+.svc-tag--soon { background: var(--warning-bg); color: var(--warning); }
+.svc-steps { display: grid; gap: 8px; counter-reset: s; }
+.svc-steps li { counter-increment: s; display: flex; gap: 10px; align-items: baseline; }
+.svc-steps li::before { content: counter(s); flex: none; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--peat); color: var(--lime); font-size: .8125rem; font-weight: 600; }
+.svc-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.contact-grid { display: grid; gap: 32px; margin-top: 24px; }
+@media (min-width: 900px) { .contact-grid { grid-template-columns: 1fr 1.2fr; } }
+.contact-ways { display: grid; gap: 14px; }
+.contact-ways li { display: grid; gap: 2px; padding: 16px 18px; background: var(--lime); }
+.contact-ways strong { font-size: var(--fs-small); }
+.contact-form { display: grid; gap: 18px; }
+.form-note { font-size: var(--fs-small); color: var(--ink-muted); }
+.calc { display: grid; gap: 14px; padding: 28px; background: var(--peat); color: var(--lime); margin: 28px 0; }
+.calc label { font-weight: 600; }
+.calc .input { max-width: 260px; }
+.calc__out { font-family: var(--serif); font-size: 1.375rem; line-height: 1.3; }
+.calc__fine { font-size: var(--fs-caption); color: var(--mist); }
+.benefit-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: var(--fs-small); }
+.benefit-table th, .benefit-table td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--rule-light, #d7d2c8); vertical-align: top; }
+.benefit-table th { background: var(--limestone); }
+.signup-steps { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 16px 0; font-weight: 600; }
+.guest-note { margin-bottom: 10px; font-weight: 600; font-size: var(--fs-small); }
+.save-prompt { display: grid; gap: 10px; justify-items: start; padding: 22px; background: var(--peat); color: var(--lime); margin: 20px 0; }
+.ship-line { font-size: var(--fs-small); color: var(--ink-muted); margin: 6px 0; }
+.reorder-list { display: grid; gap: 10px; margin: 16px 0; }
+.reorder-list li { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; padding: 12px 16px; background: var(--lime); }
+
+.rx-panel .btn--outline { color: var(--lime); border-color: rgb(245 245 242 / .55); }
+.rx-panel .btn--outline:hover { background: rgb(245 245 242 / .12); }
+.rx-panel .rx-sub { font-family: var(--sans); font-size: var(--fs-small); display: inline; margin: 0; color: var(--lime); }
+.rx-panel .rx-actions .btn { color: inherit; }
+.rx-panel .rx-actions .btn--light { color: var(--ink); }
+.buy__rating { margin-top: 6px; }
+.buy__rating a { text-decoration: none; }
+.reviews-sec { padding: 48px 0; scroll-margin-top: 90px; }
+.account-tiles__wide { grid-column: 1 / -1; }
+.contact-ways a { color: inherit; }
 </style>
 </head>
 <body data-free-shipping="149" data-route="home">
@@ -1381,6 +1493,8 @@ p.alert { display: grid; grid-template-columns: 24px 1fr; gap: 14px; }
 
 <!-- ICON SPRITE: one custom line set on a 24px grid, 1.25px stroke -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4.4A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1.3-1.5-2.3-1.2-.9.8c-1-.4-2-1.4-2.4-2.4l.8-.9L10.8 7.5z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="m12 3 2.7 5.7 6.2.8-4.6 4.3 1.2 6.2L12 17l-5.5 3 1.2-6.2L3.1 9.5l6.2-.8z"/></symbol>
   <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.9-4.9"/></symbol>
   <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.75"/><path d="M4.5 20.5c.6-3.9 3.7-6.5 7.5-6.5s6.9 2.6 7.5 6.5"/></symbol>
   <symbol id="i-cart" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12.1a1 1 0 0 1-1 .9H7.2a1 1 0 0 1-1-.9z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></symbol>
@@ -1467,7 +1581,13 @@ p.alert { display: grid; grid-template-columns: 24px 1fr; gap: 14px; }
 
     <div class="header-actions">
       <a class="action-link header-account" href="#/login">
-        <svg class="icon" aria-hidden="true"><use href="#i-user"/></svg><span class="action-link__text">Log in</span>
+        <svg class="icon" aria-hidden="true"><use href="#i-user"/></svg><span class="action-link__text">Log in / Members</span>
+      </a>
+      <a class="action-link header-help" href="https://wa.me/353539236240?text=Hi%20Feirm%2C%20I%20have%20a%20question%20about%E2%80%A6" rel="noopener">
+        <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span class="action-link__text">Order by phone or WhatsApp</span>
+      </a>
+      <a class="action-link header-buyagain" href="#/account" data-buyagain hidden>
+        <svg class="icon" aria-hidden="true"><use href="#i-return"/></svg><span class="action-link__text">Buy again</span>
       </a>
       <button type="button" class="action-link cart-btn" id="cart-open" aria-controls="cart-drawer" aria-expanded="false">
         <svg class="icon" aria-hidden="true"><use href="#i-cart"/></svg>
@@ -1475,6 +1595,7 @@ p.alert { display: grid; grid-template-columns: 24px 1fr; gap: 14px; }
         <span class="cart-btn__count" data-cart-count aria-hidden="true">0</span>
         <span class="sr-only" data-cart-label>Cart, 0 items</span>
       </button>
+      <p class="header-guest">No account needed to order</p>
     </div>
   </div>
 </header>
@@ -1491,8 +1612,10 @@ p.alert { display: grid; grid-template-columns: 24px 1fr; gap: 14px; }
     <div class="mnav__quick">
       <a class="btn btn--light btn--block btn--lg" href="#/become-a-member">Become a member</a>
       <a href="#/login"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg>Log in to your account</a>
+      <a href="#/services"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Services and help</a>
       <a href="tel:+353539236240"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call (053) 923 6240</a>
-      <p>Phone lines open Monday to Friday, 9am to 5pm. Free delivery on orders over <span data-threshold>€149</span>.</p>
+      <a href="https://wa.me/353539236240?text=Hi%20Feirm%2C%20I%20have%20a%20question%20about%E2%80%A6" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Order by phone or WhatsApp</a>
+      <p>No account needed to order. Phone lines open Monday to Friday, 9am to 5pm. Free delivery on orders over <span data-threshold>€149</span>.</p>
     </div>
   </div>
 </div>
@@ -1508,17 +1631,33 @@ p.alert { display: grid; grid-template-columns: 24px 1fr; gap: 14px; }
            alt="Two people kneeling in a green field, checking a newly reseeded sward, with hedgerows and trees behind">
     </div>
     <div class="wrap grid hero__content">
-      <p class="t-kicker hero__kicker hero__reveal">Grassland &amp; forage</p>
-      <h1 id="hero-title" class="t-display hero__title hero__reveal">Ready for the reseed</h1>
+      <p class="t-kicker hero__kicker hero__reveal">Ready for the reseed</p>
+      <h1 id="hero-title" class="t-display hero__title hero__reveal">Farm &amp; veterinary supplies, delivered across Ireland</h1>
       <div class="hero__foot hero__reveal">
-        <p class="t-lede hero__lede">Grassland essentials, stocked and ready for delivery direct to your farm.</p>
+        <p class="t-lede hero__lede">Grassland essentials for the reseed, plus everything for the parlour, the yard and the herd, delivered direct to your farm.</p>
         <a class="btn btn--light btn--lg" href="#/category/grassland-forage">Shop grassland essentials</a>
       </div>
       <ul class="promises hero__reveal" aria-label="Our promises">
-        <li><a href="#/delivery-information"><strong>Free delivery over <span data-threshold>€149</span></strong><span>Nationwide, prices include VAT</span></a></li>
+        <li><a href="#/delivery-information"><strong>Free parcel delivery over <span data-threshold>€149</span></strong><span>Bulky and hazardous items charged</span></a></li>
         <li><a href="#/about-membership"><strong>Credit for members</strong><span>Apply once, buy on account</span></a></li>
         <li><a href="#dafm"><strong>DAFM-verified seller</strong><span>Licensed for vet medicines online</span></a></li>
         <li><a href="#/feirm-coop"><strong>An Irish farmers' co-op</strong><span>Dublin Road, Enniscorthy</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 1b. SERVICES STRIP -->
+  <section class="svc-strip field-lime" aria-labelledby="svc-strip-title">
+    <div class="wrap">
+      <div class="journal__head">
+        <h2 id="svc-strip-title" class="t-h2">More than a shop</h2>
+        <a class="tlink" href="#/services">All services</a>
+      </div>
+      <ul class="svc-strip__grid">
+        <li><a href="#/services?s=prescriptions"><strong>Prescriptions</strong><span>Send us your prescription and we'll check it and dispatch.</span><em>Learn more</em></a></li>
+        <li><a href="#/services?s=advisors"><strong>Advisors</strong><span>Talk to someone about inputs, animal health, energy or your farm business.</span><em>Learn more</em></a></li>
+        <li><a href="#/services?s=dosing"><strong>Dosing reminders</strong><span>We diarise your dosing and remind you before you run out.</span><em>Learn more</em></a></li>
+        <li><a href="#/services?s=credit"><strong>Member credit</strong><span>Buy on account with 30 to 120 day terms for members.</span><em>Learn more</em></a></li>
       </ul>
     </div>
   </section>
@@ -1645,6 +1784,22 @@ p.alert { display: grid; grid-template-columns: 24px 1fr; gap: 14px; }
     </div>
   </section>
 
+  <!-- 6b. WHAT FARMERS SAY -->
+  <section class="quotes field-stone" aria-labelledby="quotes-title">
+    <div class="wrap">
+      <div class="journal__head">
+        <h2 id="quotes-title" class="t-h2">What farmers say</h2>
+        <a class="tlink" href="#/about-membership">About membership</a>
+      </div>
+      <ul class="quotes__grid">
+        <li><blockquote><p>Other farmers ask me whether the annual membership is worth it. I have it covered in the first month.</p></blockquote><p class="quotes__who"><strong>Brendan Phelan</strong> Co. Kilkenny</p></li>
+        <li><blockquote><p>I buy regularly because I know I'm getting the best deal without spending hours tracking down sales reps.</p></blockquote><p class="quotes__who"><strong>John Fogarty</strong> Co. Tipperary</p></li>
+        <li><blockquote><p>The convenience alone saves me time and money — I plan the job, make a call, and the order arrives at my yard before I know it.</p></blockquote><p class="quotes__who"><strong>Sean Conefrey</strong> Co. Longford</p></li>
+      </ul>
+      <p class="quotes__note">Quotes from Feirm Co-op members.</p>
+    </div>
+  </section>
+
   <!-- 7. JOURNAL -->
   <section class="journal field-lime" aria-labelledby="journal-title">
     <div class="wrap">
@@ -1654,18 +1809,21 @@ p.alert { display: grid; grid-template-columns: 24px 1fr; gap: 14px; }
       </div>
       <div class="grid journal__grid">
         <article class="post post--lead">
-          <div class="photo"><img src="https://fls-a22453d3-0aae-4af4-bc68-844e4af3f6ff.laravel.cloud/blog-images/01M28BN7YWR42MW9P15QY7QHHP.png" width="987" height="429" loading="lazy" decoding="async" alt=""></div>
+          <div class="photo"><img src="https://fls-a22453d3-0aae-4af4-bc68-844e4af3f6ff.laravel.cloud/blog-images/01M28BN7YWR42MW9P15QY7QHHP.png" width="987" height="429" loading="lazy" decoding="async" alt="A farmer walking behind a herd of young cattle in a field"></div>
           <p class="post__tag">News</p>
           <h3 class="t-h2"><a href="#/blog/need-a-veterinary-prescription-feirm-supplies-makes-it-simple">Need a veterinary prescription? Feirm Supplies makes it simple</a></h3>
+          <p class="post__by">By James Freeman · September 11th 2026</p>
         </article>
         <div class="journal__list">
           <article class="post">
             <p class="post__tag">News</p>
             <h3 class="t-h3"><a href="#/blog/winter-dosing-for-cattle-a-practical-guide-for-irish-farmers">Winter dosing for cattle: a practical guide for Irish farmers</a></h3>
+            <p class="post__by">By James Freeman · September 14th 2026</p>
           </article>
           <article class="post">
             <p class="post__tag">News</p>
             <h3 class="t-h3"><a href="#/blog/test-dont-guess-faecal-egg-count-testing-for-worms-fluke">Test, don't guess: faecal egg count testing for worms and fluke</a></h3>
+            <p class="post__by">By James Freeman · September 11th 2026</p>
           </article>
         </div>
       </div>
@@ -1707,16 +1865,19 @@ p.alert { display: grid; grid-template-columns: 24px 1fr; gap: 14px; }
         <summary>Customer care<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
         <ul>
           <li><a href="#/delivery-information">Delivery information</a></li>
+          <li><a href="#/apply-for-credit">Apply for credit</a></li>
           <li><a href="#/returns-refunds">Returns &amp; refunds</a></li>
           <li><a href="#/faq">FAQs</a></li>
-          <li><a href="#contact">Contact us</a></li>
+          <li><a href="#/services">Services</a></li>
+          <li><a href="#/contact">Contact us</a></li>
         </ul>
       </details>
-      <details class="fcol" data-footer-col id="contact">
+      <details class="fcol" data-footer-col id="contact-details">
         <summary>Contact<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
         <address>
           <span><strong>Phone</strong><a href="tel:+353539236240">(053) 923 6240</a></span>
           <span><strong>Opening hours</strong>Monday to Friday, 9am to 5pm</span>
+          <span><strong>WhatsApp</strong><a href="https://wa.me/353539236240?text=Hi%20Feirm%2C%20I%20have%20a%20question%20about%E2%80%A6" rel="noopener">Message us on WhatsApp</a></span>
           <span><strong>Email</strong><a href="mailto:supplies@feirmcoop.com">supplies@feirmcoop.com</a></span>
           <span><strong>Address</strong>Dublin Road, Enniscorthy,<br>Co. Wexford, Y21 Y9E4</span>
         </address>
@@ -1744,7 +1905,7 @@ p.alert { display: grid; grid-template-columns: 24px 1fr; gap: 14px; }
   </section>
 
   <div class="wrap footer__bottom">
-    <div class="footer__family"><span>Part of the Feirm family:</span><a href="https://feirmpeople.com" rel="noopener">Feirm People</a><a href="#/feirm-coop">Feirm Co-op</a></div>
+    <div class="footer__family"><span>Part of the Feirm family:</span><a href="https://feirmpeople.ie" rel="noopener">Feirm People</a><a href="#/feirm-coop">Feirm Co-op</a></div>
     <nav class="footer__legal" aria-label="Legal">
       <a href="#/privacy-policy">Privacy policy</a>
       <a href="#/terms-conditions">Terms &amp; conditions</a>
@@ -1755,6 +1916,9 @@ p.alert { display: grid; grid-template-columns: 24px 1fr; gap: 14px; }
 </footer>
 
 <!-- ============================== CART DRAWER ============================== -->
+<a class="wa-fab" id="wa-fab" href="https://wa.me/353539236240?text=Hi%20Feirm%2C%20I%20have%20a%20question%20about%E2%80%A6" rel="noopener" aria-label="Chat with Feirm on WhatsApp">
+  <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg><span class="wa-fab__text">WhatsApp us</span>
+</a>
 <div class="scrim" id="scrim" hidden></div>
 <div class="drawer drawer--right cart" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" hidden>
   <div class="drawer__head dark">
@@ -1771,11 +1935,14 @@ p.alert { display: grid; grid-template-columns: 24px 1fr; gap: 14px; }
   <div class="drawer__foot" id="cart-foot">
     <div class="totals">
       <div class="totals__row"><span>Subtotal</span><span data-cart-subtotal>€0.00</span></div>
-      <div class="totals__row totals__row--grand"><span>Total, incl. VAT</span><span data-cart-subtotal>€0.00</span></div>
+      <div class="totals__row"><span>Delivery</span><span data-cart-delivery>Free</span></div>
+      <div class="totals__row totals__row--grand"><span>Total, incl. VAT</span><span data-cart-total>€0.00</span></div>
     </div>
+    <p class="ship-line" data-cart-heavy hidden>Includes a bulky or hazardous delivery charge for some items.</p>
+    <p class="guest-note">No account needed. Check out as a guest.</p>
     <a class="btn btn--solid btn--lg btn--block" href="#/checkout">Proceed to checkout</a>
     <button type="button" class="btn btn--outline btn--block" data-close>Continue shopping</button>
-    <p class="member-prompt">Feirm member? <a href="#/login">Log in</a> to apply your member pricing.</p>
+    <p class="member-prompt">Feirm member? <a href="#/login">Log in</a> to apply your member pricing. <a href="#/returns-refunds">Returns</a></p>
   </div>
 </div>
 
@@ -1793,7 +1960,7 @@ p.alert { display: grid; grid-template-columns: 24px 1fr; gap: 14px; }
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-const RAW_HOME = "\n\n  <!-- 1. HERO -->\n  <section class=\"hero dark\" aria-labelledby=\"hero-title\">\n    <div class=\"hero__media photo\">\n      <img src=\"https://fls-a22453d3-0aae-4af4-bc68-844e4af3f6ff.laravel.cloud/page-blocks/01M0ZBZ9ZKN2TNQ66FGEW0T1YG.webp\"\n           width=\"1368\" height=\"1089\" fetchpriority=\"high\" decoding=\"async\" sizes=\"100vw\"\n           alt=\"Two people kneeling in a green field, checking a newly reseeded sward, with hedgerows and trees behind\">\n    </div>\n    <div class=\"wrap grid hero__content\">\n      <p class=\"t-kicker hero__kicker hero__reveal\">Grassland &amp; forage</p>\n      <h1 id=\"hero-title\" class=\"t-display hero__title hero__reveal\">Ready for the reseed</h1>\n      <div class=\"hero__foot hero__reveal\">\n        <p class=\"t-lede hero__lede\">Grassland essentials, stocked and ready for delivery direct to your farm.</p>\n        <a class=\"btn btn--light btn--lg\" href=\"https://feirmsupplies.com/category/grassland-forage\">Shop grassland essentials</a>\n      </div>\n      <ul class=\"promises hero__reveal\" aria-label=\"Our promises\">\n        <li><a href=\"https://feirmsupplies.com/delivery-information\"><strong>Free delivery over <span data-threshold>\u20ac149</span></strong><span>Nationwide, prices include VAT</span></a></li>\n        <li><a href=\"https://feirmsupplies.com/about-membership\"><strong>Credit for members</strong><span>Apply once, buy on account</span></a></li>\n        <li><a href=\"#dafm\"><strong>DAFM-verified seller</strong><span>Licensed for vet medicines online</span></a></li>\n        <li><a href=\"https://feirmsupplies.com/feirm-coop\"><strong>An Irish farmers' co-op</strong><span>Dublin Road, Enniscorthy</span></a></li>\n      </ul>\n    </div>\n  </section>\n\n  <!-- 2. SIGNATURE: THE DEPARTMENTS INDEX -->\n  <section class=\"depts dark\" aria-labelledby=\"depts-title\">\n    <div class=\"wrap grid\">\n      <div class=\"depts__intro\">\n        <h2 id=\"depts-title\" class=\"t-h2\">Everything from the parlour to the field</h2>\n        <p class=\"t-lede muted\">Around 600 products in six departments, delivered nationwide.</p>\n      </div>\n      <ul class=\"depts__list\" id=\"cat-grid\"><!-- rendered from CATEGORY data; empty categories are skipped --></ul>\n      <div class=\"depts__frame\" aria-hidden=\"true\">\n        <div class=\"frame\" id=\"dept-frame\"></div>\n        <p class=\"depts__caption\" id=\"dept-caption\"></p>\n      </div>\n    </div>\n  </section>\n\n  <!-- 3. SEASON STORY -->\n  <section class=\"story field-lime\" aria-labelledby=\"story-title\">\n    <div class=\"wrap grid story__grid\">\n      <div class=\"story__media photo\">\n        <img src=\"https://fls-a22453d3-0aae-4af4-bc68-844e4af3f6ff.laravel.cloud/page-blocks/01M13V16MWYFMB6AHFC2EH8294.webp\"\n             width=\"1340\" height=\"720\" loading=\"lazy\" decoding=\"async\" sizes=\"(min-width: 1024px) 60vw, 100vw\"\n             alt=\"A farmer in overalls attaching a milking cluster in a rotary parlour\">\n      </div>\n      <div class=\"story__body\">\n        <p class=\"t-kicker\">New in</p>\n        <h2 id=\"story-title\" class=\"t-h2\">Parlour essentials</h2>\n        <p class=\"t-lede muted\">Filter socks, milk liners and machine parts, alongside the hygiene products that go with them.</p>\n        <a class=\"tlink\" href=\"https://feirmsupplies.com/category/dairy/parlour-essentials\">Shop parlour essentials</a>\n        <div class=\"prows\">\n          <p class=\"prows-title\">For the parlour</p>\n          <div data-rows=\"parlour\"></div>\n        </div>\n      </div>\n    </div>\n    <div class=\"wrap grid story__grid story__grid--reverse\">\n      <div class=\"story__media photo\">\n        <img src=\"https://fls-a22453d3-0aae-4af4-bc68-844e4af3f6ff.laravel.cloud/page-blocks/01M13V5MG604PA4ETHZY49D2BC.webp\"\n             width=\"1340\" height=\"720\" loading=\"lazy\" decoding=\"async\" sizes=\"(min-width: 1024px) 60vw, 100vw\"\n             alt=\"A farmer carrying a feed bag as a group of calves gathers round in a field\">\n      </div>\n      <div class=\"story__body\">\n        <p class=\"t-kicker\">Youngstock and herd</p>\n        <h2 class=\"t-h2\">Animal nutrition</h2>\n        <p class=\"t-lede muted\">Minerals, vitamins, milk replacer and calf feeding equipment.</p>\n        <a class=\"tlink\" href=\"https://feirmsupplies.com/category/animal-nutrition\">Shop animal nutrition</a>\n      </div>\n    </div>\n  </section>\n\n  <!-- 4. ONE CURATED PRODUCT MODULE -->\n  <section class=\"shelf field-stone\" aria-labelledby=\"shelf-title\">\n    <div class=\"wrap\">\n      <div class=\"shelf__head\">\n        <h2 id=\"shelf-title\" class=\"t-h2\">Popular right now</h2>\n        <div class=\"seg\" role=\"tablist\" aria-label=\"Product collections\">\n          <button type=\"button\" role=\"tab\" id=\"tab-trending\" aria-controls=\"panel-trending\" aria-selected=\"true\">Trending</button>\n          <button type=\"button\" role=\"tab\" id=\"tab-deals\" aria-controls=\"panel-deals\" aria-selected=\"false\" tabindex=\"-1\">Today's deals</button>\n          <button type=\"button\" role=\"tab\" id=\"tab-latest\" aria-controls=\"panel-latest\" aria-selected=\"false\" tabindex=\"-1\">New in</button>\n        </div>\n      </div>\n\n      <div role=\"tabpanel\" id=\"panel-trending\" aria-labelledby=\"tab-trending\" tabindex=\"0\">\n        <div class=\"shelf__panel-head\"><p class=\"muted\">Trending in dairy hygiene</p>\n          <div class=\"rail__nav\"><button type=\"button\" class=\"rail__btn\" data-rail-prev=\"trending\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-arrow-l\"/></svg><span class=\"sr-only\">Previous products</span></button><button type=\"button\" class=\"rail__btn\" data-rail-next=\"trending\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-arrow-r\"/></svg><span class=\"sr-only\">Next products</span></button></div></div>\n        <ul class=\"rail__track\" id=\"rail-trending\" data-products=\"trending\" aria-label=\"Trending in dairy hygiene\"></ul>\n        <p class=\"shelf__foot\"><a class=\"tlink\" href=\"https://feirmsupplies.com/category/dairy/Dairy-Hygiene\">Shop all dairy hygiene</a></p>\n      </div>\n      <div role=\"tabpanel\" id=\"panel-deals\" aria-labelledby=\"tab-deals\" tabindex=\"0\" hidden>\n        <div class=\"shelf__panel-head\"><p class=\"muted\">Today's deals, while stocks last</p>\n          <div class=\"rail__nav\"><button type=\"button\" class=\"rail__btn\" data-rail-prev=\"deals\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-arrow-l\"/></svg><span class=\"sr-only\">Previous products</span></button><button type=\"button\" class=\"rail__btn\" data-rail-next=\"deals\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-arrow-r\"/></svg><span class=\"sr-only\">Next products</span></button></div></div>\n        <ul class=\"rail__track\" id=\"rail-deals\" data-products=\"deals\" aria-label=\"Today's deals\"></ul>\n        <p class=\"shelf__foot\"><a class=\"tlink\" href=\"https://feirmsupplies.com/products\">See all products</a></p>\n      </div>\n      <div role=\"tabpanel\" id=\"panel-latest\" aria-labelledby=\"tab-latest\" tabindex=\"0\" hidden>\n        <div class=\"shelf__panel-head\"><p class=\"muted\">The latest additions to the shop</p>\n          <div class=\"rail__nav\"><button type=\"button\" class=\"rail__btn\" data-rail-prev=\"latest\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-arrow-l\"/></svg><span class=\"sr-only\">Previous products</span></button><button type=\"button\" class=\"rail__btn\" data-rail-next=\"latest\"><svg class=\"icon\" aria-hidden=\"true\"><use href=\"#i-arrow-r\"/></svg><span class=\"sr-only\">Next products</span></button></div></div>\n        <ul class=\"rail__track\" id=\"rail-latest\" data-products=\"latest\" aria-label=\"New in\"></ul>\n        <p class=\"shelf__foot\"><a class=\"tlink\" href=\"https://feirmsupplies.com/products\">See all products</a></p>\n      </div>\n    </div>\n  </section>\n\n  <!-- 5. MEMBERSHIP -->\n  <section class=\"members\" aria-labelledby=\"members-title\">\n    <div class=\"wrap grid\">\n      <div class=\"members__body\">\n        <p class=\"t-kicker\" style=\"color:var(--barley)\">Feirm Co-op membership</p>\n        <h2 id=\"members-title\" class=\"t-h1\">Join the co-op</h2>\n        <p class=\"t-lede muted\" style=\"max-width:28em\">Feirm Supplies is the shop of Feirm Co-op. Members can buy on a credit account and see member pricing when they log in.</p>\n        <dl class=\"members__facts\" style=\"width:100%\">\n          <div><dt>Credit account</dt><dd>Apply for credit and buy on account, instead of paying at every order.</dd></div>\n          <div><dt>Member pricing</dt><dd>Your member discount is applied in the cart when you're logged in.</dd></div>\n          <div><dt>A farmers' co-op</dt><dd>Built to get Irish farmers ahead.</dd></div>\n        </dl>\n        <div class=\"members__actions\">\n          <a class=\"btn btn--light btn--lg\" href=\"https://feirmsupplies.com/become-a-member\">Become a member</a>\n          <a class=\"tlink\" href=\"https://feirmsupplies.com/about-membership\">How membership works</a>\n        </div>\n      </div>\n      <aside class=\"members__product\" aria-labelledby=\"members-product-title\">\n        <h3 id=\"members-product-title\">Bulk orders, on account</h3>\n        <div data-rows=\"members\"></div>\n      </aside>\n    </div>\n  </section>\n\n  <!-- 6. MISSION -->\n  <section class=\"mission dark\" aria-labelledby=\"mission-title\">\n    <div class=\"photo\">\n      <img src=\"https://fls-a22453d3-0aae-4af4-bc68-844e4af3f6ff.laravel.cloud/page-blocks/01KYHKX83TFXKVQPVC7SAKJFFQ.webp\"\n           width=\"2720\" height=\"900\" loading=\"lazy\" decoding=\"async\" sizes=\"100vw\"\n           alt=\"A dairy herd gathered close together, ear tags catching the light\">\n    </div>\n    <div class=\"wrap grid\" style=\"width:100%\">\n      <div class=\"mission__body\">\n        <h2 id=\"mission-title\" class=\"t-h1\">A cooperative built to get Irish farmers ahead.</h2>\n        <p class=\"t-lede\">Feirm Supplies is the online shop of Feirm Co-op, on Dublin Road in Enniscorthy, Co. Wexford.</p>\n        <a class=\"tlink\" href=\"https://feirmsupplies.com/our-mission-values\">Read our mission</a>\n      </div>\n    </div>\n  </section>\n\n  <!-- 7. JOURNAL -->\n  <section class=\"journal field-lime\" aria-labelledby=\"journal-title\">\n    <div class=\"wrap\">\n      <div class=\"journal__head\">\n        <h2 id=\"journal-title\" class=\"t-h2\">From the journal</h2>\n        <a class=\"tlink\" href=\"https://feirmsupplies.com/blog\">All articles</a>\n      </div>\n      <div class=\"grid journal__grid\">\n        <article class=\"post post--lead\">\n          <div class=\"photo\"><img src=\"https://fls-a22453d3-0aae-4af4-bc68-844e4af3f6ff.laravel.cloud/blog-images/01M28BN7YWR42MW9P15QY7QHHP.png\" width=\"987\" height=\"429\" loading=\"lazy\" decoding=\"async\" alt=\"\"></div>\n          <p class=\"post__tag\">News</p>\n          <h3 class=\"t-h2\"><a href=\"https://feirmsupplies.com/blog/need-a-veterinary-prescription-feirm-supplies-makes-it-simple\">Need a veterinary prescription? Feirm Supplies makes it simple</a></h3>\n        </article>\n        <div class=\"journal__list\">\n          <article class=\"post\">\n            <p class=\"post__tag\">News</p>\n            <h3 class=\"t-h3\"><a href=\"https://feirmsupplies.com/blog/winter-dosing-for-cattle-a-practical-guide-for-irish-farmers\">Winter dosing for cattle: a practical guide for Irish farmers</a></h3>\n          </article>\n          <article class=\"post\">\n            <p class=\"post__tag\">News</p>\n            <h3 class=\"t-h3\"><a href=\"https://feirmsupplies.com/blog/test-dont-guess-faecal-egg-count-testing-for-worms-fluke\">Test, don't guess: faecal egg count testing for worms and fluke</a></h3>\n          </article>\n        </div>\n      </div>\n    </div>\n  </section>\n";
+const RAW_HOME = (document.querySelector('main[data-prerendered="home"]') || {}).innerHTML || ''; // single source of truth: the static homepage markup above
 
 /* =====================================================================
    FEIRM STORE PROTOTYPE · CORE
@@ -1838,6 +2005,28 @@ function trapFocus(container, e) {
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const desktop = matchMedia('(min-width: 1024px)');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+/* ---------------- site config: values still awaiting client confirmation live here ---------------- */
+const CONFIG = {
+  wa: '353539236240', phone: '+353539236240', phoneText: '(053) 923 6240', email: 'supplies@feirmcoop.com',
+  feirmPeopleUrl: 'https://feirmpeople.ie',      // CONFIRM with client: feirmpeople.ie (used everywhere now) vs the old footer's .com
+  memberRate: 0.06, memberFee: 230, defaultSpend: 6000,   // CONFIRM: placeholder discount rate
+  rxCost: '[Free for members / free for all customers.]',  // CONFIRM
+  rxTurnaround: '[Usually sorted within 30 minutes during opening hours.]',  // CONFIRM
+};
+const waLink = (msg = 'Hi Feirm, I have a question about…') => `https://wa.me/${CONFIG.wa}?text=${encodeURIComponent(msg)}`;
+const memberPrice = n => Math.round(Number(n) * (1 - CONFIG.memberRate) * 100) / 100;
+/* bulky (pallet) and hazardous items have their own delivery rates, by order value (see the delivery table) */
+const HEAVY_RATES = {
+  pallet: [[299.99, 99], [549.99, 54], [749.99, 29], [998.99, 15], [Infinity, 0]],
+  hazardous: [[299.99, 109], [549.99, 74], [749.99, 39], [998.99, 19], [Infinity, 0]],
+};
+const heavyRate = (cls, value) => (HEAVY_RATES[cls].find(([max]) => value <= max) || [0, 0])[1];
+const SHIP_LABEL = { pallet: 'bulky (pallet)', hazardous: 'hazardous' };
+const shipClass = p => (p && p.ship) || '';
+/* sample ratings: stable per product, clearly labelled as sample content */
+const sampleRating = p => { const n = Number(p.variantOf ? 0 : p.id) || String(p.slug || '').length; return { r: 4 + ((n * 37) % 10) / 10, c: 3 + ((n * 53) % 46) }; };
+const starsHtml = (r, c) => `<span class="stars" role="img" aria-label="Sample rating: ${r.toFixed(1)} out of 5, ${c} reviews">${[1, 2, 3, 4, 5].map(i => icon('i-star', i <= Math.round(r) ? '' : 'is-off')).join('')}<span class="stars__count" aria-hidden="true">${r.toFixed(1)} (${c})</span></span>`;
 function loadScript(src) {
   return new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); });
 }
@@ -2012,7 +2201,7 @@ const Router = {
     document.documentElement.classList.remove('deep-link');
     hydrate(main);
     page.mount && page.mount(main, { query });
-    syncHeader();
+    syncHeader(); syncAuthUI();
     // scroll: top for new pages, restored for back/forward
     const st = history.state || {};
     const anchorEl = anchor && $(anchor, main);
@@ -2037,7 +2226,7 @@ const Router = {
 };
 
 /* ---------------- global click guard: nothing may leave the prototype ---------------- */
-const EXTERNAL_OK = /^(mailto:|tel:)|^https?:\/\/(www\.)?(gov\.ie|facebook\.com|instagram\.com|youtube\.com|tiktok\.com|feirmpeople\.com)\b/;
+const EXTERNAL_OK = /^(mailto:|tel:)|^https?:\/\/(www\.)?(gov\.ie|facebook\.com|instagram\.com|youtube\.com|tiktok\.com|feirmpeople\.(com|ie)|wa\.me|api\.whatsapp\.com)\b/;
 document.addEventListener('click', e => {
   if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
   const a = e.target.closest('a[href]'); if (!a) return;
@@ -2061,6 +2250,15 @@ document.addEventListener('click', e => {
   }
   if (!EXTERNAL_OK.test(href)) { e.preventDefault(); console.warn('[prototype] Blocked unexpected link:', href); }
 }, true);
+/* prescription upload (prototype: nothing leaves the browser) */
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-rx-upload]'); if (!b) return;
+  e.preventDefault();
+  const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*,.pdf';
+  inp.addEventListener('change', () => { if (inp.files[0]) showToast(`<strong>Thanks, we have your prescription.</strong> ${esc(inp.files[0].name)} (prototype: nothing was uploaded).`, false); });
+  inp.click();
+});
+function syncAuthUI() { const a = $('[data-buyagain]'); if (a) a.hidden = !store.get('feirm-store-session'); }
 document.addEventListener('submit', e => {
   const f = e.target;
   const action = f.getAttribute('action') || '';
@@ -2108,7 +2306,8 @@ function productCard(p, tag = 'article') {
     ${p.label ? `<p class="pcard__label">${esc(p.label)}</p>` : ''}
     <h3 class="pcard__name"><a href="${productUrl(p)}">${esc(p.name)}</a></h3>
     ${metaHtml(p)}
-    <div class="pcard__foot">${priceHtml(p)}<div class="pcard__buy" data-buy="${esc(p.id)}"></div></div>
+    <div class="pcard__meta2">${(() => { const sr = sampleRating(p); return starsHtml(sr.r, sr.c); })()}</div>
+    <div class="pcard__foot"><div>${priceHtml(p)}<p class="pcard__member">Member price <strong>${euro(memberPrice(p.fromPrice ?? p.price))}</strong></p></div><div class="pcard__buy" data-buy="${esc(p.id)}"></div></div>
   </${tag}>`;
 }
 function productRow(p, prefix = '') {
@@ -2201,8 +2400,9 @@ navList.innerHTML = `
       </div>
       ${LIVE_CATEGORIES.map(groupsHtml).join('')}
       ${LIVE_CATEGORIES.map((c, i) => `<div class="mega__feature-slot" data-feature="${i}" style="display:contents" ${i ? 'hidden' : ''}>${featureHtml(c)}</div>`).join('')}
-      <p class="mega__service"><span>Free delivery on orders over <span data-threshold>€149</span></span><span>Questions? Call <a href="tel:+353539236240">(053) 923 6240</a>, Monday to Friday, 9am to 5pm</span><a href="${url('/become-a-member')}">Become a member</a></p>
+      <p class="mega__service"><span>Free parcel delivery over <span data-threshold>€149</span> (bulky and hazardous items charged)</span><span>Order by phone or WhatsApp: <a href="tel:+353539236240">(053) 923 6240</a> · <a href="${waLink()}" rel="noopener">WhatsApp us</a>, Monday to Friday, 9am to 5pm</span><a href="${url('/become-a-member')}">Become a member</a></p>
     </div></div></li>
+  <li><a class="nav-link" href="${url('/services')}">Services</a></li>
   <li><button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mega-about">About${icon('i-down', 'icon--sm')}</button>
     <div class="mega mega--about" id="mega-about" hidden><div class="wrap grid mega__inner"><div class="mega__about">
       ${ABOUT.map(a => `<a href="${url(a.href)}"><div class="photo"><img src="${esc(a.img)}" alt="" loading="lazy" width="400" height="300"></div><span class="mega__feature-title">${esc(a.name)}</span><span class="t-small" style="color:var(--mist)">${esc(a.text)}</span></a>`).join('')}
@@ -2281,7 +2481,8 @@ function renderMobileNav(focusFirst) {
   let html = '', title = 'Menu', path = '', back = null;
   if (ci === undefined) {
     html = `<ul>${LIVE_CATEGORIES.map((c, i) => `<li><button type="button" class="mnav__item mnav__item--dept" data-drill="${i}"><span>${esc(c.name)}<small>${c.count} products</small></span>${icon('i-right')}</button></li>`).join('')}
-      <li><a class="mnav__item mnav__item--all" href="${url('/category')}">All departments</a></li></ul>
+      <li><a class="mnav__item mnav__item--all" href="${url('/category')}">All departments</a></li>
+      <li><a class="mnav__item" href="${url('/services')}">Services</a></li></ul>
       <p class="mnav__group-title">About Feirm Supplies</p>
       <ul>${ABOUT.map(a => `<li><a class="mnav__item" href="${url(a.href)}">${esc(a.name)}</a></li>`).join('')}</ul>`;
   } else if (si === undefined) {
@@ -2399,7 +2600,7 @@ $('#cart-open').addEventListener('click', e => openDrawer(cartDrawer, e.currentT
 function shipState(sub, count) {
   const left = Math.max(0, FREE_SHIPPING - sub);
   return { left, free: left === 0 && count > 0, pct: Math.min(100, (sub / FREE_SHIPPING) * 100),
-    text: count === 0 ? `Free delivery on orders over <strong>${euro(FREE_SHIPPING)}</strong>.` : left === 0 ? 'Your order qualifies for <strong>free delivery</strong>.' : `Add <strong>${euro(left)}</strong> more for free delivery.` };
+    text: count === 0 ? `Free parcel delivery on orders over <strong>${euro(FREE_SHIPPING)}</strong>.` : left === 0 ? 'Your order qualifies for <strong>free parcel delivery</strong>.' : `Add <strong>${euro(left)}</strong> more for free delivery.` };
 }
 function lineItem(i, ctx = 'drawer') {
   const p = getProduct(i.product_id) || {};
@@ -2424,6 +2625,7 @@ function renderCart() {
   $$('[data-cart-count]').forEach(el => { el.textContent = count; });
   $$('[data-cart-subtotal]').forEach(el => { el.textContent = euro(sub); });
   $$('[data-cart-label]').forEach(el => { el.textContent = `Cart, ${count} item${count === 1 ? '' : 's'}, ${euro(sub)}`; });
+  { const bd = deliveryBreakdown(); $$('[data-cart-delivery]').forEach(el => { el.textContent = bd.total ? euro(bd.total) : 'Free'; }); $$('[data-cart-total]').forEach(el => { el.textContent = euro(sub + bd.total); }); $$('[data-cart-heavy]').forEach(el => { el.hidden = !bd.hasHeavy; }); }
   $$('[data-cart-heading-count]').forEach(el => { el.textContent = count ? `(${count})` : ''; });
   $$('.ship').forEach(ship => ship.classList.toggle('is-free', st.free));
   $$('[data-ship-text], #ship-text').forEach(el => { el.innerHTML = st.text; });
@@ -2592,6 +2794,7 @@ const crumbLd = items => ({ '@context': 'https://schema.org', '@type': 'Breadcru
 const catTrail = c => { const t = []; for (let n = c; n; n = n.parent) t.unshift([n.name, n.path]); return [['Home', '/'], ...t]; };
 const liveKids = c => (c.children || []).filter(k => k.count > 0 && k.products && k.products.length);
 const isSeoIntro = s => !s || /\|\s*Feirm Supplies\s*$/i.test(s);
+const postBy = p => (p.author || p.date) ? `<p class="post__by">${p.author ? 'By ' + esc(p.author) : ''}${p.author && p.date ? ' · ' : ''}${esc(p.date || '')}</p>` : '';
 const sectionHead = (title, link, id) => `<div class="sec-head"><h2 ${id ? `id="${id}"` : ''} class="t-h2">${title}</h2>${link ? `<a class="tlink" href="${url(link[1])}">${esc(link[0])}</a>` : ''}</div>`;
 const photoOrPack = (c, w = 600) => c.photo
   ? `<div class="photo"><img src="${esc(c.photo)}" alt="${esc(c.alt || '')}" loading="lazy" decoding="async" width="${w}" height="${Math.round(w * 1.25)}"></div>`
@@ -2683,6 +2886,7 @@ function categoryView(path, ctx) {
             ${chips.map(k => `<li><a class="chip ${k === c ? 'is-active' : ''}" href="${url(k.path)}" ${k === c ? 'aria-current="page"' : ''}>${esc(k.name)} <small>${k.count}</small></a></li>`).join('')}</ul></nav>` : ''}
         </div>
         ${dept && (dept.photo || dept.packshot) ? `<div class="plp-head__media">${photoOrPack(dept, 640)}</div>` : ''}</div></div></section>
+      ${/dosing-vaccines/.test(c.path) && /dosing|worm|fluke|vaccine/i.test(c.name) ? `<div class="wrap"><div class="rx-banner" role="note">${icon('i-shield')}<strong>Need a prescription? We can arrange it.</strong><a href="${url('/services?s=prescriptions')}">See our prescription service</a></div></div>` : ''}
       ${listing.html}`,
     mount: root => listing.mount(root),
   };
@@ -2864,11 +3068,19 @@ const linesHtml = lines => {
 };
 const DELIVERY_TABLE = `<div class="table-wrap"><table class="rates"><caption>Delivery costs by order value</caption>
   <thead><tr><th scope="col">Delivery type</th><th scope="col">Order value</th><th scope="col">Delivery cost</th></tr></thead><tbody>
-  <tr><th scope="rowgroup" rowspan="2">Parcel</th><td>Under €148.99</td><td>€8.99</td></tr><tr><td>€148.99+</td><td>Free</td></tr>
+  <tr><th scope="rowgroup" rowspan="2">Parcel</th><td>Under €149</td><td>€8.99</td></tr><tr><td>€149 and over</td><td>Free</td></tr>
   <tr><th scope="rowgroup" rowspan="5">Pallet</th><td>Up to €299.99</td><td>€99.00</td></tr><tr><td>€300–€549.99</td><td>€54.00</td></tr><tr><td>€550–€749.99</td><td>€29.00</td></tr><tr><td>€750–€998.99</td><td>€15.00</td></tr><tr><td>€999+</td><td>Free</td></tr>
   <tr><th scope="rowgroup" rowspan="5">Hazardous</th><td>Up to €299.99</td><td>€109.00</td></tr><tr><td>€300–€549.99</td><td>€74.00</td></tr><tr><td>€550–€749.99</td><td>€39.00</td></tr><tr><td>€750–€998.99</td><td>€19.00</td></tr><tr><td>€999+</td><td>Free</td></tr>
   </tbody></table></div>`;
 const RX_ARTICLE = '/blog/need-a-veterinary-prescription-feirm-supplies-makes-it-simple';
+const SAMPLE_REVIEWS = [
+  { stars: 5, title: 'Arrived quickly', text: 'Ordered in the evening and it was on the yard two days later. Packed well.', who: 'Sample reviewer, Co. Wexford' },
+  { stars: 5, title: 'Does the job', text: 'Good value and just what I needed. Will order again.', who: 'Sample reviewer, Co. Cork' },
+  { stars: 4, title: 'Good, would like more sizes', text: 'Works well. The staff on the phone helped me pick the right pack size.', who: 'Sample reviewer, Co. Tipperary' },
+  { stars: 5, title: 'Easy to order', text: 'Found it straight away on my phone and checked out in a couple of minutes.', who: 'Sample reviewer, Co. Kilkenny' },
+  { stars: 4, title: 'Fair price', text: 'Cheaper than I expected and it arrived as described.', who: 'Sample reviewer, Co. Longford' },
+];
+const sampleReviews = p => { const n = Number(p.variantOf ? 0 : p.id) || String(p.slug || '').length; return [0, 1, 2].map(k => SAMPLE_REVIEWS[(n + k * 2) % SAMPLE_REVIEWS.length]); };
 
 Views.product = async ctx => {
   const slug = ctx.params[0];
@@ -2892,6 +3104,7 @@ Views.product = async ctx => {
   const kvFeatures = (D.features || []).filter(f => /^[^:]{2,40}:\s/.test(f));
   const plainFeatures = (D.features || []).filter(f => !/^[^:]{2,40}:\s/.test(f));
   const rx = !!D.prescription;
+  const cls = shipClass(bp) || shipClass(p), sr = sampleRating(p);
   const isVet = rx || specs['Target Species'] || specs['Active Ingredient'] || /veterinary-animal-care/.test(p.path);
   const out = bp.stock === 'out';
   const inc = D.inc || 1;
@@ -2924,15 +3137,21 @@ Views.product = async ctx => {
           <div>
             <p class="buy__label">${leaf ? `<a href="${url(leaf.path)}">${esc(leaf.name)}</a>` : esc(p.label)}${specs.Brand ? ` · ${esc(specs.Brand)}` : ''}</p>
             <h1 id="pdp-title">${esc(name)}</h1>
+            <p class="buy__rating"><a href="#reviews">${starsHtml(sr.r, sr.c)}</a> <span class="t-caption muted">Sample rating</span></p>
             ${code ? `<p class="buy__sku">Product code ${esc(code)}</p>` : ''}
             ${p.sample ? '<p class="sample-note">Sample product: placeholder content for review.</p>' : ''}
           </div>
           ${D.summary ? `<p class="buy__summary">${esc(D.summary)}</p>` : ''}
-          ${rx ? `<div class="rx-panel" role="note">${icon('i-shield')}<div><strong>Prescription required</strong><p>${esc(D.prescription)} Our VetPal prescription service can help organise it for you.</p><a href="${url(RX_ARTICLE)}">How prescriptions work at Feirm Supplies</a></div></div>` : ''}
+          <p class="member-note"><a href="${url('/contact')}">Ask an advisor</a> about this product.</p>
+          ${rx ? `<div class="rx-panel" role="note">${icon('i-shield')}<div><strong>Prescription required</strong><p>${esc(D.prescription)} Our VetPal prescription service can help organise it for you.</p>
+            <p><strong class="rx-sub">Need a prescription? We can arrange it.</strong> Call, WhatsApp or upload your prescription and we'll take it from there. ${CONFIG.rxCost} ${CONFIG.rxTurnaround}</p>
+            <div class="rx-actions"><a class="btn btn--light" href="tel:${CONFIG.phone}">${icon('i-phone', 'icon--sm')}<span>Call us</span></a><a class="btn btn--outline" href="${waLink('Hi Feirm, I need help with a prescription for ' + name)}" rel="noopener">${icon('i-whatsapp', 'icon--sm')}<span>WhatsApp us</span></a><button type="button" class="btn btn--outline" data-rx-upload>Upload a prescription</button></div>
+            <a href="${url(RX_ARTICLE)}">How prescriptions work at Feirm Supplies</a></div></div>` : ''}
           <div class="buy__price">
             <div class="price ${was ? 'price--sale' : ''}"><span class="price__now">${euro(price)}</span>${was ? `<span class="price__was"><span class="sr-only">Was </span>${euro(was)}</span><span class="price__save">Save ${Math.round((1 - price / was) * 100)}%</span>` : ''}<span class="price__vat">incl. VAT</span></div>
             ${ex ? `<p class="exvat">${euro(ex)} excl. VAT</p>` : ''}
-            <p class="member-note">Feirm member? <a href="${url('/login')}">Log in</a> so your member pricing and credit apply.</p>
+            <p class="buy__member">Member price <strong>${euro(memberPrice(price))}</strong> <span class="t-caption">(placeholder rate, to be confirmed)</span></p>
+            <p class="member-note">Feirm member? <a href="${url('/login')}">Log in</a> so your member pricing and credit apply. <a href="${url('/about-membership')}">See what membership gives you</a>.</p>
           </div>
           ${variants ? `<fieldset class="qv__variants buy__variants" id="pdp-variants"><legend>Size</legend>
             ${variants.map(v => `<label class="variant"><input type="radio" name="pdp-variant" value="${v.id}" data-slug="${esc(v.slug)}" ${v.id === buyId ? 'checked' : ''} ${v.out_of_stock ? 'disabled' : ''}>
@@ -2941,6 +3160,7 @@ Views.product = async ctx => {
             <p><span class="stock stock--${out ? 'out' : 'in'}">${out ? 'Out of stock' : 'In stock'}</span></p>
             ${D.click_collect ? `<p>${icon('i-store', 'icon--sm')}Same day Click &amp; Collect</p>` : ''}
             ${D.estimate && !out ? `<p>${icon('i-truck', 'icon--sm')}<span data-delivery-estimate>${esc(D.estimate)}</span></p>` : ''}
+            ${cls ? `<p class="ship-note">${icon('i-warning', 'icon--sm')}Delivery for this item: ${heavyRate(cls, price) ? euro(heavyRate(cls, price)) : 'Free'} (${SHIP_LABEL[cls]} rate)</p>` : ''}
           </div>
           ${(D.warnings || []).filter(w => !(rx && /prescription/i.test(w))).map(w => `<div class="alert alert--warning" role="note">${icon('i-warning')}<div><strong>${esc(w.split('.')[0])}</strong>${w.includes('.') && w.split('.').slice(1).join('.').trim() ? `<p>${esc(w.split('.').slice(1).join('.').trim())}</p>` : ''}</div></div>`).join('')}
           <div class="buy__cta" id="main-buy">
@@ -2957,7 +3177,7 @@ Views.product = async ctx => {
             <p class="buy__ship" id="pdp-ship"></p>
           </div>
           <ul class="trust">
-            <li><a href="${url('/delivery-information')}">${icon('i-truck')}<span><strong>Free delivery over <span data-threshold>€149</span></strong><br><span class="muted">Parcel orders in the Republic of Ireland</span></span></a></li>
+            <li><a href="${url('/delivery-information')}">${icon('i-truck')}<span><strong>Free parcel delivery over <span data-threshold>€149</span></strong><br><span class="muted">Bulky and hazardous items charged</span></span></a></li>
             <li><a href="${url('/returns-refunds')}">${icon('i-return')}<span><strong>Returns &amp; refunds</strong><br><span class="muted">How returns work</span></span></a></li>
             <li><span class="row">${icon('i-lock')}<span><strong>Secure pay</strong></span></span></li>
             <li><a href="tel:+353539236240">${icon('i-phone')}<span><strong>Questions? Call (053) 923 6240</strong><br><span class="muted">Monday to Friday, 9am to 5pm</span></span></a></li>
@@ -2990,7 +3210,7 @@ Views.product = async ctx => {
           </div></details>` : ''}
           ${(D.docs || []).length && !isVet ? `<details class="acc"><summary>Documents${icon('i-plus')}</summary><div class="acc__body"><ul class="docs">${D.docs.map(d => `<li><a href="${esc(d.href)}" rel="noopener">${esc(d.name || 'Data sheet')}</a></li>`).join('')}</ul></div></details>` : ''}
           <details class="acc" id="delivery-acc"><summary>Delivery &amp; returns${icon('i-plus')}</summary><div class="acc__body">
-            <p>Free shipping on all orders over <span data-threshold>€149</span> in Republic of Ireland.</p>${DELIVERY_TABLE}
+            <p>Free parcel delivery on orders over <span data-threshold>€149</span> in the Republic of Ireland. Bulky (pallet) and hazardous items are charged at the rates below.</p>${DELIVERY_TABLE}
             <p>Vaccines: Dispatched Monday–Thursday only.</p>
             <p>Read the full <a href="${url('/delivery-information')}">delivery information</a> and our <a href="${url('/returns-refunds')}">returns &amp; refunds</a> policy.</p></div></details>
         </div>
@@ -3000,6 +3220,12 @@ Views.product = async ctx => {
             <p class="fbt__total"><span>Total cost</span><span>${euro(fbt.reduce((n, x) => n + (x.fromPrice ?? x.price), 0))}</span></p>
             ${fbt.some(x => x.stock === 'out') ? '<p class="t-caption" style="color:var(--error)">Item currently out of stock</p>' : ''}</section>` : ''}
         </aside>
+      </div></section>
+
+      <section class="reviews-sec field-lime" id="reviews" tabindex="-1" aria-labelledby="reviews-title"><div class="wrap">
+        <h2 id="reviews-title" class="t-h2">Customer reviews</h2>
+        <p class="sample-note">Sample reviews: placeholder content for review. ${starsHtml(sr.r, sr.c)}</p>
+        <div class="reviews">${sampleReviews(p).map(r => `<article class="review"><span class="stars" role="img" aria-label="${r.stars} out of 5">${[1, 2, 3, 4, 5].map(i => icon('i-star', i <= r.stars ? '' : 'is-off')).join('')}</span><h3>${esc(r.title)}</h3><p>${esc(r.text)}</p><small>${esc(r.who)}</small></article>`).join('')}</div>
       </div></section>
 
       ${related.length ? `<section class="related field-lime" aria-labelledby="related-title"><div class="wrap">
@@ -3062,7 +3288,18 @@ function mountProduct(root, { buyId, inc, variants, images }) {
 }
 
 /* ---------------------------------------------------------------- CART PAGE */
-const deliveryFor = sub => sub >= 148.99 ? 0 : 8.99; // live parcel rule: "DPD Delivery (FOC over €148.99)"
+/* Parcel items ship free over the threshold (€149); bulky (pallet) and hazardous lines are charged by class, by the value of those lines. */
+function deliveryBreakdown() {
+  const sub = FeirmCart.subtotal, rows = [], heavy = {};
+  let parcelCount = 0;
+  FeirmCart.items.forEach(i => { const c = shipClass(getProduct(i.product_id)); if (c) heavy[c] = (heavy[c] || 0) + i.price * i.quantity; else parcelCount += i.quantity; });
+  if (parcelCount) rows.push({ label: 'Delivery (parcel)', cost: sub >= FREE_SHIPPING ? 0 : 8.99 });
+  Object.keys(heavy).forEach(c => rows.push({ label: `Delivery (${SHIP_LABEL[c]})`, cost: heavyRate(c, heavy[c]), heavy: true }));
+  return { rows, total: rows.reduce((n, r) => n + r.cost, 0), hasHeavy: Object.keys(heavy).length > 0 };
+}
+const deliveryFor = () => deliveryBreakdown().total;
+const deliveryRowsHtml = bd => bd.rows.map(r => `<div><dt>${r.label}</dt><dd>${r.cost ? euro(r.cost) : 'Free'}</dd></div>`).join('') || '<div><dt>Delivery</dt><dd>Free</dd></div>';
+const HEAVY_NOTE = 'Includes a bulky or hazardous delivery charge for some items.'
 Views.cart = () => ({
   name: 'cart', title: T('Your cart'), description: 'Review your cart at Feirm Supplies.',
   html: `<section class="page-head page-head--light field-lime"><div class="wrap">${crumbs([['Home', '/'], ['Cart']], true)}<h1 class="t-h1">Your cart <span class="muted t-h3" data-cart-heading-count></span></h1></div></section>
@@ -3079,9 +3316,10 @@ Views.cart = () => ({
             <a class="tlink" href="${url('/products')}">Continue shopping</a></div>
           <aside class="summary" aria-labelledby="sum-title"><h2 id="sum-title">Order summary</h2>
             <div class="ship ship--light ${st.free ? 'is-free' : ''}"><p class="ship__text">${st.text}</p><div class="ship__bar" role="progressbar" aria-label="Progress to free delivery" aria-valuemin="0" aria-valuemax="${FREE_SHIPPING}" aria-valuenow="${Math.min(FREE_SHIPPING, sub).toFixed(2)}"><div class="ship__fill" style="width:${st.pct}%"></div></div></div>
-            <dl class="summary__rows"><div><dt>Items (${count})</dt><dd>${euro(sub)}</dd></div><div><dt>Delivery (parcel)</dt><dd>${del ? euro(del) : 'Free'}</dd></div>
+            <dl class="summary__rows"><div><dt>Items (${count})</dt><dd>${euro(sub)}</dd></div>${deliveryRowsHtml(deliveryBreakdown())}
             <div class="summary__total"><dt>Total, incl. VAT</dt><dd>${euro(sub + del)}</dd></div></dl>
-            <p class="t-caption muted">Pallet and hazardous goods have their own delivery rates, confirmed at checkout. <a href="${url('/delivery-information')}">Delivery information</a></p>
+            <p class="t-caption muted">${deliveryBreakdown().hasHeavy ? HEAVY_NOTE + ' ' : 'Bulky (pallet) and hazardous items have their own delivery rates. '}<a href="${url('/delivery-information')}">Delivery information</a> · <a href="${url('/returns-refunds')}">Returns &amp; refunds</a></p>
+            <p class="guest-note">No account needed. Check out as a guest.</p>
             <a class="btn btn--solid btn--lg btn--block" href="${url('/checkout')}">Proceed to checkout</a>
             <p class="member-prompt">Feirm member? <a href="${url('/login')}">Log in</a> to apply your member pricing.</p></aside>`;
     };
@@ -3243,6 +3481,7 @@ Views.confirmation = () => {
           <ol class="next-steps"><li><strong>${o.mode === 'collection' ? 'Collection' : 'Delivery'}</strong><span class="muted">${o.mode === 'collection' ? 'Collect from Feirm Supplies, Dublin Road, Enniscorthy, Wexford, Y21 Y9E4.' : `Standard ROI delivery, 2–3 days, to ${esc(o.address || 'your address')}.`}</span></li>
           <li><strong>Questions about your order?</strong><span class="muted">Call <a href="tel:+353539236240">(053) 923 6240</a>, Monday to Friday, 9am to 5pm, or email <a href="mailto:supplies@feirmcoop.com">supplies@feirmcoop.com</a>.</span></li></ol>
           <p class="alert alert--info" role="note">${icon('i-info')}<span>This is a prototype confirmation. No order was placed and no payment was taken.</span></p>
+          ${store.get('feirm-store-session') ? '' : `<div class="save-prompt"><p class="t-h3">You would have saved ${euro(o.sub * CONFIG.memberRate)} on this order as a Feirm member.</p><p>See what membership gives you. (Estimate at a placeholder ${Math.round(CONFIG.memberRate * 100)}% member discount.)</p><a class="btn btn--light" href="${url('/about-membership')}">See membership</a></div>`}
           <div class="cta-row"><a class="btn btn--solid" href="${url('/products')}">Continue shopping</a><a class="tlink" href="${url('/')}">Back to homepage</a></div></section>
         <aside class="summary" aria-labelledby="osum"><h2 id="osum">Order summary</h2>
           <ul class="mini-lines">${o.items.map(i => `<li>${studio(i.image, '', 120)}<span><span class="mini-lines__name">${esc(i.name)}</span><span class="muted t-caption">Qty ${i.quantity}</span></span><span class="mini-lines__price">${euro(i.price * i.quantity)}</span></li>`).join('')}</ul>
@@ -3312,6 +3551,13 @@ Views.forgot = () => ({
     <div class="alert alert--info" id="fp-done" hidden role="status">${icon('i-info')}<div><strong>Check your email</strong><p>If an account exists for that address, a reset link is on its way. (Prototype: no email is sent.)</p></div></div>`),
   mount: root => wireSimpleForm(root, f => { f.hidden = true; $('#fp-done', root).hidden = false; $('#fp-done', root).focus?.(); }),
 });
+/* Buy again: the last saved order, or a labelled sample history when there is none yet */
+function reorderItems() {
+  const o = store.get('feirm-store-last-order');
+  if (o && o.items && o.items.length) return { sample: false, items: o.items.filter(i => getProduct(i.product_id)).map(i => ({ product_id: i.product_id, name: i.name, quantity: i.quantity })) };
+  const pick = CatalogAdapter.products.filter(p => p.stock === 'in' && !p.rx && !p.ship && !(p.variants && p.variants.length > 1)).slice(0, 3);
+  return { sample: true, items: pick.map(p => ({ product_id: p.id, name: p.name, quantity: 1 })) };
+}
 Views.account = () => {
   const s = store.get('feirm-store-session');
   if (!s) return { redirect: '/login' }; // live: /account redirects to /login when logged out
@@ -3325,9 +3571,21 @@ Views.account = () => {
         <li><h2 class="t-h3">Addresses</h2><p class="muted">Saved delivery and billing addresses.</p><span class="review-tag">To confirm</span></li>
         <li><h2 class="t-h3">Your details</h2><p class="muted">Name, email, phone and password.</p><span class="review-tag">To confirm</span></li>
         <li><h2 class="t-h3">Membership &amp; credit</h2><p class="muted">Membership number, pricing and credit terms.</p><span class="review-tag">To confirm</span></li>
+        <li><h2 class="t-h3">Membership</h2><p class="muted">Renewal date: [to be confirmed]</p><p><strong>Your savings this year: ${euro(((store.get('feirm-store-last-order') || {}).sub || 0) * CONFIG.memberRate)}</strong></p><p class="t-caption muted">Estimate at a placeholder ${Math.round(CONFIG.memberRate * 100)}% member discount.</p><a class="tlink" href="${url('/about-membership')}">What membership gives you</a></li>
+        <li class="account-tiles__wide" id="buy-again"><h2 class="t-h3">Buy again</h2>${(() => { const hist = reorderItems(); return `<p class="muted">${hist.sample ? 'Sample order history for review. ' : 'From your last order. '}Add items to your basket in one tap.</p>
+          <ul class="reorder-list">${hist.items.map(i => `<li><span>${esc(i.name)} <span class="muted">× ${i.quantity}</span></span><button type="button" class="btn btn--outline" data-reorder="${esc(i.product_id)}" data-qty="${i.quantity}">Reorder this item</button></li>`).join('')}</ul>
+          <button type="button" class="btn btn--solid" data-reorder-all>Reorder all</button>`; })()}</li>
       </ul>
       <button type="button" class="btn btn--outline" id="logout">Log out</button></div></section>`,
-    mount: root => $('#logout', root).addEventListener('click', () => { localStorage.removeItem('feirm-store-session'); Router.navigate('/login'); }),
+    mount: root => {
+      $('#logout', root).addEventListener('click', () => { localStorage.removeItem('feirm-store-session'); Router.navigate('/login'); });
+      root.addEventListener('click', async e => {
+        const one = e.target.closest('[data-reorder]'), all = e.target.closest('[data-reorder-all]');
+        if (!one && !all) return;
+        const list = one ? [{ product_id: one.dataset.reorder, quantity: Number(one.dataset.qty) || 1 }] : reorderItems().items;
+        try { for (const i of list) await FeirmCart.add(i.product_id, i.quantity); showToast(`<strong>Added to cart:</strong> ${list.length} item${list.length === 1 ? '' : 's'}`); } catch (err) { showToast('Sorry, we could not add that item.', false); }
+      });
+    },
   };
 };
 Views.becomeMember = () => ({
@@ -3335,8 +3593,8 @@ Views.becomeMember = () => ({
   html: `<section class="member-hero dark"><div class="wrap grid">
       <div class="member-hero__text">${crumbs([['Home', '/'], ['Become a member']])}
         <p class="t-kicker">Trusted by more than 900+ farmers across Ireland</p><h1 class="t-h1">Member benefits</h1>
-        <p class="t-lede muted">As well as all the benefits you already love, you get:</p>
-        <ul class="benefits">${['Exclusive access to membership pricing', 'Herd health programme', 'Complimentary prescription service', 'Credit terms available', 'Free labour consultancy (Feirm People)', 'Diarised dosing and repeat order management', 'Loyalty Rebate'].map(b => `<li>${icon('i-check')}${esc(b)}</li>`).join('')}</ul>
+        <p class="t-lede muted">As well as all the benefits you already love, you get member pricing, credit terms, advice and more. Everything included is in the table below.</p>
+        <ol class="signup-steps" aria-label="How to sign up"><li>1. Your details</li><li>2. Payment</li><li>3. Confirmation</li></ol>
         <a class="tlink" href="${url('/about-membership')}">How membership works</a></div>
       <div class="member-hero__form">
         <div class="plan"><p class="t-kicker">Annual Membership</p><p class="plan__price"><span>€230.00</span> per year</p><p class="muted">12 month membership paid up front. Renews annually.</p></div>
@@ -3347,16 +3605,49 @@ Views.becomeMember = () => ({
           <button type="submit" class="btn btn--light btn--lg btn--block"><span>Continue</span></button>
         </form>
         <div class="received" id="bm-done" hidden tabindex="-1"><h2 class="t-h2">Application received</h2><p class="muted">Thanks. In the live store the next steps (your details and the €230 annual payment) follow here.</p><span class="review-tag">Next steps to confirm</span><a class="btn btn--light" href="${url('/')}">Back to the shop</a></div>
-      </div></div></section>`,
+      </div></div></section>
+    <section class="section field-lime"><div class="wrap"><h2 class="t-h2">Everything membership includes</h2>${benefitsBlock()}</div></section>`,
   mount: root => {
     wirePwRules(root, 'bm-pass');
     const e = $('#bm-email', root), st = $('#bm-email-status', root); let t;
     e.addEventListener('input', () => { clearTimeout(t); st.textContent = ''; if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.value)) return; st.textContent = 'Checking…'; t = setTimeout(() => { st.textContent = ''; }, 400); }); // live: POST /become-a-member/check-email
     wireSimpleForm(root, f => { f.hidden = true; const d = $('#bm-done', root); d.hidden = false; d.focus(); });
+    mountCalc(root);
   },
 });
 
 /* ---------------------------------------------------------------- CONTENT PAGES */
+const SECTION_STATUS = { 'Herd Health Animal Programme': 'New', 'Electricity Cost Management': 'Coming soon' };
+const BENEFITS = [
+  ['Exclusive member pricing', 'Member prices on farm and veterinary supplies, shown under the standard price', 'Live'],
+  ['Loyalty rebate', 'An annual rebate on what you spend', 'Live'],
+  ['Credit terms', 'Buy on account, with 30 to 120 day terms [eligibility to be confirmed]', 'Live'],
+  ['Veterinary prescription support', 'We help arrange prescriptions for animal health products', 'Live'],
+  ['Diarised dosing and repeat orders', 'We diarise your dosing and remind you before you run out', 'Live'],
+  ['Your own technical advisor', 'Advice on inputs, animal health, energy, procurement and farm business', 'Live'],
+  ['Free labour consultancy (Feirm People)', 'A free consultation on farm relief, contract hire or full-time recruitment', 'Live'],
+  ['Herd health programme', 'Prevention and performance support for your herd', 'New'],
+  ['Electricity cost management', 'Support with high-usage farm electricity costs, with Utility Solutions', 'Coming soon'],
+];
+const benefitsBlock = () => `<div class="table-wrap"><table class="benefit-table"><caption class="sr-only">Everything included in Feirm Co-op membership</caption>
+  <thead><tr><th scope="col">Benefit</th><th scope="col">What you get</th><th scope="col">Status</th></tr></thead>
+  <tbody>${BENEFITS.map(b => `<tr><th scope="row">${esc(b[0])}</th><td>${esc(b[1])}</td><td><span class="svc-tag ${b[2] === 'Coming soon' ? 'svc-tag--soon' : b[2] === 'New' ? 'svc-tag--members' : ''}">${b[2]}</span></td></tr>`).join('')}</tbody></table></div>
+  <ol class="signup-steps" aria-label="How to sign up"><li>1. Your details</li><li>2. Payment</li><li>3. Confirmation</li></ol>
+  <div class="calc" id="calc"><h3 class="t-h3">What could you save?</h3>
+    <label for="calc-spend">How much do you spend on farm supplies a year?</label>
+    <input class="input" id="calc-spend" type="number" inputmode="numeric" min="0" step="100" value="${CONFIG.defaultSpend}">
+    <p class="calc__out" id="calc-out" aria-live="polite"></p>
+    <p class="calc__fine">Based on a placeholder ${Math.round(CONFIG.memberRate * 100)}% member discount and the €${CONFIG.memberFee} annual fee. The discount rate is to be confirmed.</p></div>`;
+function mountCalc(root) {
+  const inp = $('#calc-spend', root), out = $('#calc-out', root); if (!inp || !out) return;
+  const draw = () => {
+    const spend = Math.max(0, Number(inp.value) || 0), save = spend * CONFIG.memberRate, net = save - CONFIG.memberFee;
+    out.textContent = net >= 0
+      ? `You spend ${euroShort(spend)} a year. As a member you'd save about ${euroShort(Math.round(save))}, or ${euroShort(Math.round(net))} after the €${CONFIG.memberFee} fee.`
+      : `You spend ${euroShort(spend)} a year. As a member you'd save about ${euroShort(Math.round(save))}, which is ${euroShort(Math.round(-net))} less than the €${CONFIG.memberFee} fee at this spend.`;
+  };
+  inp.addEventListener('input', draw); draw();
+}
 async function contentPage(path, kind) {
   $('#main').innerHTML = loadingHtml('Loading');
   const C = await CatalogAdapter.loadContent();
@@ -3372,11 +3663,11 @@ async function contentPage(path, kind) {
     let k = 0;
     return { ...base, html: `<section class="ed-hero dark">${hero ? `<div class="photo ed-hero__media"><img src="${esc(hero.src)}" alt="${esc(hero.alt)}" width="1600" height="900" fetchpriority="high" decoding="async"></div>` : ''}
         <div class="wrap ed-hero__text">${crumbs(trail)}<p class="t-kicker">${esc(label)}</p><h1 class="t-h1">${esc(title)}</h1>${pg.intro ? `<p class="t-lede">${esc(pg.intro)}</p>` : ''}
-        ${path === '/about-membership' ? `<div class="cta-row"><a class="btn btn--light btn--lg" href="${url('/become-a-member')}">Become a member</a><a class="tlink" href="tel:+353539236240">Contact us</a></div>` : ''}</div></section>
+        ${path === '/about-membership' ? `<div class="cta-row"><a class="btn btn--light btn--lg" href="${url('/become-a-member')}">Become a member</a><a class="tlink" href="${url('/contact')}">Contact us</a></div>` : ''}</div></section>
       ${secs.map((s, i) => { const img = s.images[0] || (i % 2 === 0 ? imgs[k++] : null); return `<section class="ed-sec ${i % 2 ? 'field-stone' : 'field-lime'}"><div class="wrap grid ed-sec__grid ${img ? '' : 'ed-sec__grid--text'} ${i % 4 === 2 ? 'ed-sec__grid--rev' : ''}">
         ${img ? `<div class="photo ed-sec__media"><img src="${esc(img.src)}" alt="${esc(img.alt)}" width="900" height="700" loading="lazy" decoding="async"></div>` : ''}
-        <div class="ed-sec__body"><h2 class="t-h2">${esc(s.title)}</h2><div class="prose">${internalize(s.html)}</div></div></div></section>`; }).join('')}
-      ${path === '/about-membership' ? `<section class="members"><div class="wrap"><h2 class="t-h1">Take the hassle out of your farm. For €230 annually.</h2><div class="cta-row"><a class="btn btn--light btn--lg" href="${url('/become-a-member')}">Become a member</a></div></div></section>` : ''}` };
+        <div class="ed-sec__body"><h2 class="t-h2">${esc(s.title)}</h2>${SECTION_STATUS[s.title] ? `<p><span class="svc-tag ${SECTION_STATUS[s.title] === 'Coming soon' ? 'svc-tag--soon' : 'svc-tag--members'}">${SECTION_STATUS[s.title]}</span></p>` : ''}<div class="prose">${internalize(s.html).replace('<!--BENEFITS-->', benefitsBlock())}</div></div></div></section>`; }).join('')}
+      ${path === '/about-membership' ? `<section class="members"><div class="wrap"><h2 class="t-h1">Take the hassle out of your farm. For €230 annually.</h2><div class="cta-row"><a class="btn btn--light btn--lg" href="${url('/become-a-member')}">Become a member</a></div></div></section>` : ''}`, mount: root => mountCalc(root) };
   }
   if (kind === 'faq') {
     return { ...base, html: `<section class="page-head dark"><div class="wrap">${crumbs(trail)}<h1 class="t-h1">${esc(title)}</h1>${pg.intro ? `<p class="t-lede muted">${esc(pg.intro)}</p>` : ''}</div></section>
@@ -3423,11 +3714,11 @@ Views.blog = async ctx => {
         ${tag ? `<p class="t-lede">Tagged “${esc(tagName)}” <a class="tlink" href="${url('/blog')}">Clear</a></p>` : ''}
         ${!posts.length ? `<div class="empty-state"><h2 class="t-h2">No articles here yet</h2><a class="btn btn--solid" href="${url('/blog')}">See all articles</a></div>` : `
         <div class="grid journal__grid">
-          <article class="post post--lead"><div class="photo"><img src="${esc(lead.image)}" width="1200" height="600" alt="" loading="lazy"></div><p class="post__tag">${esc(lead.category)}${lead.date ? ' · ' + esc(lead.date) : ''}</p>
-            <h2 class="t-h2"><a href="${url('/blog/' + lead.slug)}">${esc(lead.title)}</a></h2><p class="muted">${esc(lead.excerpt)}</p></article>
-          <div class="journal__list">${rest.slice(0, 2).map(p => `<article class="post"><p class="post__tag">${esc(p.category)}</p><h2 class="t-h3"><a href="${url('/blog/' + p.slug)}">${esc(p.title)}</a></h2></article>`).join('')}</div>
+          <article class="post post--lead"><div class="photo"><img src="${esc(lead.image)}" width="1200" height="600" alt="" loading="lazy"></div><p class="post__tag">${esc(lead.category)}</p>
+            <h2 class="t-h2"><a href="${url('/blog/' + lead.slug)}">${esc(lead.title)}</a></h2>${postBy(lead)}<p class="muted">${esc(lead.excerpt)}</p></article>
+          <div class="journal__list">${rest.slice(0, 2).map(p => `<article class="post"><p class="post__tag">${esc(p.category)}</p><h2 class="t-h3"><a href="${url('/blog/' + p.slug)}">${esc(p.title)}</a></h2>${postBy(p)}</article>`).join('')}</div>
         </div>
-        ${rest.length > 2 ? `<ul class="post-cards">${rest.slice(2).map(p => `<li class="post"><div class="photo"><img src="${esc(p.image)}" width="600" height="400" alt="" loading="lazy"></div><p class="post__tag">${esc(p.category)}</p><h2 class="t-h3"><a href="${url('/blog/' + p.slug)}">${esc(p.title)}</a></h2></li>`).join('')}</ul>` : ''}`}
+        ${rest.length > 2 ? `<ul class="post-cards">${rest.slice(2).map(p => `<li class="post"><div class="photo"><img src="${esc(p.image)}" width="600" height="400" alt="" loading="lazy"></div><p class="post__tag">${esc(p.category)}</p><h2 class="t-h3"><a href="${url('/blog/' + p.slug)}">${esc(p.title)}</a></h2>${postBy(p)}</li>`).join('')}</ul>` : ''}`}
         ${C.blog.tags.length ? `<div class="tag-cloud"><h2 class="t-h4">Topics</h2><ul class="chips">${C.blog.tags.map(t => `<li><a class="chip ${tag === t.slug ? 'is-active' : ''}" href="${url('/blog?tag=' + t.slug)}">${esc(t.name)} <small>${t.count}</small></a></li>`).join('')}</ul></div>` : ''}
       </div></section>`,
   };
@@ -3447,7 +3738,7 @@ Views.article = async ctx => {
       <header class="article__head dark"><div class="wrap">${crumbs([['Home', '/'], ['News', '/blog'], [post.title]])}
         <p class="t-kicker">${esc(post.category)}</p><h1 class="t-h1">${esc(post.title)}</h1>
         ${post.author || post.date ? `<p class="article__meta">${post.author ? 'By ' + esc(post.author) : ''}${post.author && post.date ? ', ' : ''}${esc(post.date || '')}</p>` : ''}</div></header>
-      ${post.image ? `<div class="wrap"><div class="photo article__image"><img src="${esc(post.image)}" width="1400" height="700" alt="" fetchpriority="high" decoding="async"></div></div>` : ''}
+      ${post.image ? `<div class="wrap"><div class="photo article__image"><img src="${esc(post.image)}" width="1400" height="700" alt="${esc(post.title)}" fetchpriority="high" decoding="async"></div></div>` : ''}
       <div class="wrap grid article__grid"><div class="prose prose--article">${internalize(post.html)}</div>
         <aside class="article__aside">${(post.tags || []).length ? `<h2 class="t-h4">Topics</h2><ul class="chips">${post.tags.map(t => `<li><a class="chip" href="${url('/blog?tag=' + t.slug)}">${esc(t.name)}</a></li>`).join('')}</ul>` : ''}
           <div class="help-card"><h2 class="t-h4">Questions?</h2><p>Call <a href="tel:+353539236240">(053) 923 6240</a>, Monday to Friday, 9am to 5pm.</p></div></aside></div>
@@ -3471,6 +3762,96 @@ Views.notFound = ctx => ({
 });
 Views.error = e => ({ name: 'error', title: T('Something went wrong'), html: `<section class="nf dark"><div class="wrap"><h1 class="t-h1">Something went wrong</h1><p class="t-lede muted">Please try again, or call (053) 923 6240.</p><a class="btn btn--light" href="${url('/')}">Back to homepage</a></div></section>` });
 
+/* ---------------------------------------------------------------- SERVICES, CONTACT, CREDIT (new pages) */
+const SERVICES = [
+  { id: 'prescriptions', title: 'Veterinary prescription service', who: 'Everyone', line: 'Get the animal health products your vet has prescribed, without the runaround.',
+    forWho: 'Farmers who need a wormer, vaccine or other prescription-only product.', steps: ['Send it: call, WhatsApp or upload your prescription.', 'We check it: our team makes sure it is valid for the products you want.', 'We dispatch: your order goes out on the next delivery.'] },
+  { id: 'advisors', title: 'Talk to an advisor', who: 'Members', line: 'Speak with someone who knows farming about inputs, animal health, energy and your farm business.', forWho: 'Members who want a second opinion before they buy.' },
+  { id: 'dosing', title: 'Dosing reminders and repeat orders', who: 'Members', line: 'We diarise your dosing and remind you before you run out.', forWho: 'Members who dose on a schedule and want repeat orders handled.' },
+  { id: 'herd-health', title: 'Herd health programme', who: 'Members', status: 'New', line: 'Prevention and performance support for your herd.', forWho: 'Members who want a plan, not just products.' },
+  { id: 'credit', title: 'Member credit', who: 'Members', line: 'Buy on account, with 30 to 120 day terms. [Who can get credit to be confirmed.]', forWho: 'Members who want to spread the cost of inputs.' },
+  { id: 'labour', title: 'Farm labour (Feirm People)', who: 'Everyone', line: 'Relief milkers and farm staff, with a free labour consultation for members.', forWho: 'Anyone who needs farm relief, contract hire or full-time recruitment.' },
+  { id: 'electricity', title: 'Electricity cost management', who: 'Members', status: 'Coming soon', line: 'Support with high-usage farm electricity costs, with Utility Solutions.', forWho: 'Members with high electricity use.' },
+];
+const svcActions = id => ({
+  prescriptions: `<a class="btn btn--solid" href="tel:${CONFIG.phone}">${icon('i-phone', 'icon--sm')}<span>Call us</span></a><a class="btn btn--outline" href="${waLink('Hi Feirm, I need help with a prescription for…')}" rel="noopener">${icon('i-whatsapp', 'icon--sm')}<span>WhatsApp us</span></a><button type="button" class="btn btn--outline" data-rx-upload>Upload a prescription</button><a class="tlink" href="${url(RX_ARTICLE)}">How prescriptions work (VetPal guide)</a>`,
+  advisors: `<a class="btn btn--solid" href="${url('/contact')}">Ask an advisor</a>`,
+  dosing: `<a class="btn btn--solid" href="${url('/contact')}">Ask about dosing reminders</a>`,
+  'herd-health': `<a class="btn btn--solid" href="${url('/contact')}">Ask about the programme</a><a class="tlink" href="${url('/about-membership')}">About membership</a>`,
+  credit: `<a class="btn btn--solid" href="${url('/apply-for-credit')}">Apply for credit</a>`,
+  labour: `<a class="btn btn--solid" href="${CONFIG.feirmPeopleUrl}" rel="noopener">Visit Feirm People</a>`,
+  electricity: `<a class="btn btn--outline" href="${url('/about-membership')}">About membership</a>`,
+}[id]);
+Views.services = ctx => ({
+  name: 'services', title: T('Services'), description: 'More than a shop: veterinary prescription help, advisors, dosing reminders, herd health, member credit and farm labour from Feirm Co-op.',
+  jsonld: crumbLd([['Home', '/'], ['Services', '/services']]),
+  html: `<section class="page-head dark"><div class="wrap">${crumbs([['Home', '/'], ['Services']])}<h1 class="t-h1">Services</h1>
+      <p class="t-lede muted">More than a shop. Feirm is farmer-owned, so you get the products and the help to choose and use them.</p></div></section>
+    <section class="svc-page field-lime"><div class="wrap">
+      <p class="form-note">Each service shows whether it is for everyone or for members only. These tags are awaiting client confirmation.</p>
+      <div class="svc-list">${SERVICES.map(v => `<article class="svc-card" id="${v.id}" tabindex="-1" aria-labelledby="${v.id}-t">
+        <div class="svc-card__tags"><span class="svc-tag ${v.who === 'Members' ? 'svc-tag--members' : ''}">${v.who === 'Members' ? 'Members only' : 'For everyone'}</span>${v.status ? `<span class="svc-tag ${v.status === 'Coming soon' ? 'svc-tag--soon' : 'svc-tag--members'}">${v.status}</span>` : ''}</div>
+        <h2 id="${v.id}-t" class="t-h3">${esc(v.title)}</h2><p>${esc(v.line)}</p><p class="form-note"><strong>Who it is for:</strong> ${esc(v.forWho)}</p>
+        ${v.steps ? `<ol class="svc-steps">${v.steps.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : ''}
+        <div class="svc-actions">${svcActions(v.id)}</div></article>`).join('')}</div>
+    </div></section>`,
+  mount: (root, { query }) => { const t = query && query.get('s') && document.getElementById(query.get('s')); if (t) { t.scrollIntoView({ behavior: reducedMotion.matches ? 'auto' : 'smooth', block: 'start' }); t.focus({ preventScroll: true }); } },
+});
+function wireInfoForm(root, formId, labels, doneId) {
+  const f = $('#' + formId, root); if (!f) return;
+  f.addEventListener('submit', async e => {
+    e.preventDefault(); e.stopPropagation();
+    let bad = null;
+    Object.keys(labels).forEach(id => {
+      const i = $('#' + id, f), err = $(`#${id}-err`, f);
+      const msg = i.value.trim() ? '' : `Enter your ${labels[id]}.`;
+      i.setAttribute('aria-invalid', msg ? 'true' : 'false'); if (err) { err.textContent = msg; err.hidden = !msg; }
+      if (msg && !bad) bad = i;
+    });
+    if (bad) { bad.focus(); return; }
+    const b = $('[type=submit]', f); b.setAttribute('aria-busy', 'true'); await sleep(600); b.removeAttribute('aria-busy');
+    f.hidden = true; const d = $('#' + doneId, root); d.hidden = false; d.focus();
+  }, true);
+}
+Views.contact = () => ({
+  name: 'contact', title: T('Contact us'), description: 'Contact Feirm Supplies by phone, WhatsApp, email or the contact form. We reply within one working day.',
+  jsonld: crumbLd([['Home', '/'], ['Contact us', '/contact']]),
+  html: authShell('Contact us', `<p class="t-lede muted">Ask about an order, a product, a prescription or membership. We reply within one working day.</p>
+    <form class="auth__form" id="contact-form" novalidate>
+      ${field('cf-name', 'Name', { name: 'name', ac: 'name', req: true })}
+      ${field('cf-contact', 'Email or phone', { name: 'contact', ac: 'email', req: true })}
+      ${field('cf-order', 'Order number', { name: 'order' })}
+      <div class="field"><label class="field__label" for="cf-msg">Message</label><textarea class="input textarea" id="cf-msg" name="message" rows="5" required aria-required="true" aria-describedby="cf-msg-err"></textarea><p class="field__error" id="cf-msg-err" hidden></p></div>
+      <button type="submit" class="btn btn--solid btn--lg btn--block"><span>Send message</span></button>
+      <p class="form-note">We reply within one working day. Messages sent after 5pm or at weekends are answered the next working day.</p>
+      <p class="form-note">We use your details only to answer your message. Read our <a href="${url('/privacy-policy')}">privacy policy</a>.</p>
+    </form>
+    <div class="alert alert--info" id="cf-done" hidden tabindex="-1" role="status">${icon('i-info')}<div><strong>Thanks, we have your message</strong><p>We reply within one working day. (Prototype: no message was sent.)</p></div></div>`,
+    `<h2 class="t-h3">Other ways to reach us</h2><ul class="contact-ways">
+      <li><strong>Phone</strong><a href="tel:${CONFIG.phone}">${CONFIG.phoneText}</a></li>
+      <li><strong>WhatsApp</strong><a href="${waLink()}" rel="noopener">Message us on WhatsApp</a></li>
+      <li><strong>Email</strong><a href="mailto:${CONFIG.email}">${CONFIG.email}</a></li>
+      <li><strong>Address</strong><span>Dublin Road, Enniscorthy, Co. Wexford, Y21 Y9E4</span></li>
+      <li><strong>Opening hours</strong><span>Monday to Friday, 9am to 5pm</span></li></ul>
+      <p class="form-note">Out of hours? Leave a message and we will reply when we are back.</p>`),
+  mount: root => wireInfoForm(root, 'contact-form', { 'cf-name': 'name', 'cf-contact': 'email address or phone number', 'cf-msg': 'message' }, 'cf-done'),
+});
+Views.credit = () => ({
+  name: 'credit', title: T('Apply for credit'), description: 'Apply for member credit with Feirm Supplies: business name, herd size and contact details.',
+  jsonld: crumbLd([['Home', '/'], ['Apply for credit', '/apply-for-credit']]),
+  html: authShell('Apply for credit', `<p class="t-lede muted">Tell us about your farm business and we will come back to you about credit terms.</p>
+    <form class="auth__form" id="credit-form" novalidate>
+      ${field('cr-biz', 'Business name', { name: 'business', ac: 'organization', req: true })}
+      ${field('cr-herd', 'Herd size', { name: 'herd', req: true, hint: 'For example, 120 dairy cows' })}
+      ${field('cr-name', 'Your name', { name: 'name', ac: 'name', req: true })}
+      ${field('cr-contact', 'Phone or email', { name: 'contact', ac: 'email', req: true })}
+      <button type="submit" class="btn btn--solid btn--lg btn--block"><span>Send application</span></button>
+      <p class="form-note">[Credit terms of 30 to 120 days are offered to members. Who can apply, and the terms, are to be confirmed.] See <a href="${url('/about-membership')}">membership</a>.</p>
+    </form>
+    <div class="alert alert--info" id="cr-done" hidden tabindex="-1" role="status">${icon('i-info')}<div><strong>Application received</strong><p>We will be in touch about your credit application. (Prototype: nothing was sent.)</p></div></div>`),
+  mount: root => wireInfoForm(root, 'credit-form', { 'cr-biz': 'business name', 'cr-herd': 'herd size', 'cr-name': 'name', 'cr-contact': 'phone number or email address' }, 'cr-done'),
+});
+
 /* ---------------------------------------------------------------- ROUTES (mirror the live URLs 1:1) */
 Router
   .on(/^\/$/, () => Views.home())
@@ -3492,6 +3873,9 @@ Router
   .on(/^\/register$/, () => Views.register())
   .on(/^\/forgot-password$/, () => Views.forgot())
   .on(/^\/account$/, () => Views.account())
+  .on(/^\/services$/, ctx => Views.services(ctx))
+  .on(/^\/contact$/, () => Views.contact())
+  .on(/^\/apply-for-credit$/, () => Views.credit())
   .on(/^\/become-a-member$/, () => Views.becomeMember())
   .on(/^\/(about|our-mission-values|feirm-coop|about-membership)$/, ctx => contentPage(ctx.path, 'editorial'))
   .on(/^\/faq$/, ctx => contentPage('/faq', 'faq'))
